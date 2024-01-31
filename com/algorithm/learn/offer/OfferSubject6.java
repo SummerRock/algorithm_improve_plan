@@ -35,4 +35,13 @@ public class OfferSubject6 {
         }
         return arrayList;
     }
+
+    public static ArrayList<Integer> printListFromTailToHeadV2(ListNode listNode) {
+        ArrayList<Integer> ret = new ArrayList<>();
+        if (listNode != null) {
+            ret.addAll(printListFromTailToHeadV2(listNode.next));
+            ret.add(listNode.val);
+        }
+        return ret;
+    }
 }
