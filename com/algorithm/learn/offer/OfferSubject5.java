@@ -9,11 +9,12 @@ public class OfferSubject5 {
      * 0≤len(s)≤1000 。保证字符串中的字符为大写英文字母、小写英文字母和空格中的一种。
      */
     public static void main(String... args) {
-        String result = replaceSpace(new StringBuffer("We Are Happy"));
+        String result = replaceSpaceV2("We Are Happy");
         System.out.println(result);
     }
 
-    public static String replaceSpace(StringBuffer str) {
+    public static String replaceSpace(String s) {
+        StringBuffer str = new StringBuffer(s);
         int P1 = str.length() - 1;
         for (int i = 0; i <= P1; i++)
             if (str.charAt(i) == ' ')
@@ -55,7 +56,7 @@ public class OfferSubject5 {
         char[] charArr = new char[emptyCount];
         int p1 = s.length() - 1;
         int p2 = emptyCount - 1;
-        while (p1 >= 0 && p2 > p1) {
+        while (p1 >= 0) {
             char c = s.charAt(p1--);
             if (c == ' ') {
                 charArr[p2--] = '0';
