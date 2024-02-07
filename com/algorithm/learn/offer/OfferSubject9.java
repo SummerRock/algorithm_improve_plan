@@ -11,7 +11,21 @@ public class OfferSubject9 {
      * @param args
      */
     public static void main(String... args) {
+        MockQueue queue = new MockQueue();
+        queue.push(1);
+        queue.push(2);
+        queue.push(3);
 
+//        System.out.println("Front element of the queue: " + queue.peek()); // Output: 1
+
+        System.out.println("Dequeued element: " + queue.pop()); // Output: 1
+        System.out.println("Dequeued element: " + queue.pop()); // Output: 2
+
+        queue.push(4);
+        System.out.println("Dequeued element: " + queue.pop()); // Output: 3
+        System.out.println("Dequeued element: " + queue.pop()); // Output: 4
+
+        System.out.println("Is the queue empty? " + queue.empty()); // Output: true
     }
 
     public static class MockQueue {
@@ -32,6 +46,10 @@ public class OfferSubject9 {
                 throw new RuntimeException("");
             }
             return stack2.pop();
+        }
+
+        public boolean empty() {
+            return stack1.isEmpty() && stack2.isEmpty();
         }
     }
 }
