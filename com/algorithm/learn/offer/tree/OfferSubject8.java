@@ -9,33 +9,53 @@ public class OfferSubject8 {
      * @param args
      */
     public static void main(String... args) {
+        // 构建一个测试用例
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(8);
+        root.left.parent = root;
+        root.right.parent = root;
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.left.left.parent = root.left;
+        root.left.right.parent = root.left;
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(10);
+        root.right.left.parent = root.right;
+        root.right.right.parent = root.right;
 
+        TreeNode nextNode = getNext(root.left.right);
+        if (nextNode != null) {
+            System.out.println("Next node value: " + nextNode.val);
+        } else {
+            System.out.println("There is no inorder successor for the given node.");
+        }
     }
 
-    public static TreeLinkNode GetNext(TreeLinkNode pNode) {
+    public static TreeNode getNext(TreeNode pNode) {
         if (pNode.right != null) {
-            TreeLinkNode node = pNode.right;
+            TreeNode node = pNode.right;
             while (node.left != null)
                 node = node.left;
             return node;
         } else {
-            while (pNode.next != null) {
-                TreeLinkNode parent = pNode.next;
+            while (pNode.parent != null) {
+                TreeNode parent = pNode.parent;
                 if (parent.left == pNode)
                     return parent;
-                pNode = pNode.next;
+                pNode = pNode.parent;
             }
         }
         return null;
     }
 
-    private static class TreeLinkNode {
+    private static class TreeNode {
         int val;
-        TreeLinkNode left = null;
-        TreeLinkNode right = null;
-        TreeLinkNode next = null; // 指向父结点的指针
+        TreeNode left = null;
+        TreeNode right = null;
+        TreeNode parent = null; // 指向父结点的指针
 
-        TreeLinkNode(int val) {
+        TreeNode(int val) {
             this.val = val;
         }
     }
