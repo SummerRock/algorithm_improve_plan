@@ -38,7 +38,7 @@ public class OfferSubject4 {
 
     public static boolean findValue(int value, int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
-            for (int j = arr[i].length - 1; j > 0; j--) {
+            for (int j = arr[i].length - 1; j >= 0; j--) {
                 if (arr[i][j] == value) {
                     return true;
                 } else if (value < arr[i][j]) {
