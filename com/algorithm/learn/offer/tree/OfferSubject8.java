@@ -32,13 +32,24 @@ public class OfferSubject8 {
         }
     }
 
+
+
+    /**
+     * 如果当前节点有右子树，则中序遍历的下一个节点是右子树的最左边的节点。
+     * 如果当前节点没有右子树，并且它是父节点的左子节点，则下一个节点是它的父节点。
+     * 如果当前节点没有右子树，并且它是父节点的右子节点，则需要沿着父节点的指针向上遍历，直到找到一个节点是其父节点的左子节点，该父节点就是下一个中序遍历的节点。
+     * @param pNode
+     * @return
+     */
     public static TreeNode getNext(TreeNode pNode) {
+        // 如果有右子树，则下一个节点是右子树的最左边的节点
         if (pNode.right != null) {
             TreeNode node = pNode.right;
             while (node.left != null)
                 node = node.left;
             return node;
         } else {
+            // 如果当前节点是父节点的右子节点，沿着父节点向上遍历，直到找到一个节点是其父节点的左子节点
             while (pNode.parent != null) {
                 TreeNode parent = pNode.parent;
                 if (parent.left == pNode)
