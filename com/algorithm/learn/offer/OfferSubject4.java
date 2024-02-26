@@ -1,4 +1,4 @@
-package com.algorithm.learn.offer.search;
+package com.algorithm.learn.offer;
 
 public class OfferSubject4 {
 
